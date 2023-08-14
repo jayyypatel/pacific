@@ -1,0 +1,125 @@
+{% load static %}
+
+
+<div id="search_container_2">
+    <div id="search_2">
+        <ul class="nav nav-tabs">
+            <li><a href="#tours" data-bs-toggle="tab" class="active show" id="tab_bt_1"><span>Seach Bus</span></a></li>
+            
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane fade active show" id="tours">
+               <form action="{% url 'root:search_bus' %}" method="POST" name="search">
+                    {% csrf_token %}
+                    <div class="row g-0 custom-search-input-2">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <!-- <input class="form-control pac-target-input" type="text" placeholder="From..." id="autocomplete" name="from" autocomplete="off"> -->
+                                {{form.from_d}}
+                                <i class="icon_pin_alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <!-- <input class="form-control pac-target-input" type="text" placeholder="To..." id="autocomplete" name='to' autocomplete="off"> -->
+                                {{form.to_d}}
+                                <i class="icon_pin_alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            
+                            {{form.date}}    
+                            
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="submit" class="btn_search" value="Search">
+                        </div>
+                    </div>
+                    <!-- /row -->
+                </form>
+            </div>
+            <!-- End tab -->
+            <div class="tab-pane fade" id="hotels">
+                <form>
+                    <div class="row g-0 custom-search-input-2">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Hotel Name, City...">
+                                <i class="icon_pin_alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <input class="form-control date-pick" type="text" name="dates" placeholder="When..">
+                                <i class="icon_calendar"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="panel-dropdown">
+                                <a href="#">Guests <span class="qtyTotal hotels">1</span></a>
+                                <div class="panel-dropdown-content">
+                                    <!-- Quantity Buttons -->
+                                    <div class="qtyButtons hotels">
+                                        <label>Adults</label>
+                                        <div class="qtyDec hotels"></div><input type="text" name="qtyInput_hotels" value="1"><div class="qtyInc hotels"></div>
+                                    </div>
+                                    <div class="qtyButtons hotels">
+                                        <label>Childrens</label>
+                                        <div class="qtyDec hotels"></div><input type="text" name="qtyInput_hotels" value="0"><div class="qtyInc hotels"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="submit" class="btn_search" value="Search">
+                        </div>
+                    </div>
+                    <!-- /row -->
+                </form>
+            </div>
+            <!-- End tab -->
+            <div class="tab-pane" id="restaurants">
+                <form>
+                    <div class="row g-0 custom-search-input-2">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <input class="form-control" type="text" placeholder="Restaurant Name, City...">
+                                <i class="icon_pin_alt"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <input class="form-control date-pick" type="text" name="dates" placeholder="When..">
+                                <i class="icon_calendar"></i>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="panel-dropdown">
+                                <a href="#">Guests <span class="qtyTotal restaurants">1</span></a>
+                                <div class="panel-dropdown-content">
+                                    <!-- Quantity Buttons -->
+                                    <div class="qtyButtons restaurants">
+                                        <label>Adults</label>
+                                        <div class="qtyDec restaurants"></div><input type="text" name="qtyInput_restaurants" value="1"><div class="qtyInc restaurants"></div>
+                                    </div>
+                                    <div class="qtyButtons restaurants">
+                                        <label>Childrens</label>
+                                        <div class="qtyDec restaurants"></div><input type="text" name="qtyInput_restaurants" value="0"><div class="qtyInc restaurants"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="submit" class="btn_search" value="Search">
+                        </div>
+                    </div>
+                    <!-- /row -->
+                </form>
+            </div>
+            <!-- End tab -->
+        </div>
+    </div>
+    <!-- End search_container_2 -->
+</div>
+<!--/carousel-->

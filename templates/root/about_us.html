@@ -1,0 +1,142 @@
+{% extends 'root/layout.html' %}
+{% load static %}
+
+{% block body %}
+<section class="parallax-window" data-parallax="scroll" data-image-src="{%static 'img/header_bg.jpg' %}"
+    data-natural-width="1400" data-natural-height="470">
+    <div class="parallax-content-1 opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+        <div class="animated fadeInDown">
+            <h1>About us</h1>
+            <p>Welcome to Pacific Tours & Travels</p>
+        </div>
+    </div>
+</section>
+<!-- End Section -->
+
+<main>
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'root:index' %}">Home</a>
+                </li>
+                <li>About Us</li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Position -->
+
+    <div class="container margin_60">
+
+        <div class="main_title">
+            <h2>Some <span>good </span>reasons</h2>
+            <p>to use our website for bookings and travels related informations.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                <div class="feature">
+                    <i class="icon_set_1_icon-30"></i>
+                    <h3><span>+ 1000</span> Customers</h3>
+                    <p>
+                        Customer happiness is the level of loyalty and satisfaction that our customers experience after
+                        engaging with our website . It's the feeling that comes from our customers having their
+                        needs met regularly, at the right time, in the right way. It may seem like "happiness"
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.2s">
+                <div class="feature">
+                    <i class="icon_set_1_icon-41"></i>
+                    <h3><span>+120</span> Premium city tours</h3>
+                    <p>
+                        Our premium tours are the ultimate way to experience the best of what [destination] has to
+                        offer. Led by expert guides, these tours offer exclusive access to the most sought-after sights
+                        and activities in the area.From private tours of historical landmarks to VIP experiences at top
+                        attractions, our premium tours provide a truly personalized .
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- End row -->
+        <div class="row">
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                <div class="feature">
+                    <i class="icon_set_1_icon-57"></i>
+                    <h3><span>H24</span> Support</h3>
+                    <p>
+                        Our H24 support service is here to provide you with round-the-clock assistance whenever you need
+                        it. Our team of dedicated and professional support specialists are available 24 hours a day, 7
+                        days a week, to help you with any issues or questions you may have.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.6s">
+                <div class="feature">
+                    <i class="icon_set_1_icon-22"></i>
+                    <h3><span>Pet</span> allowed</h3>
+                    <p>
+                        At website, we understand that pets are a part of the family, and we want to make sure that
+                        they're included in your travel plans. That's why we're proud to offer pet-friendly tours that
+                        allow you to bring your furry companion along for the adventure.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- End row -->
+    </div>
+    <!-- End container -->
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 nopadding features-intro-img">
+                <div class="features-bg">
+                    <div class="features-img"></div>
+                </div>
+            </div>
+            <div class="col-lg-6 nopadding">
+                <div class="features-content">
+                    <h3>"Why our website is perfect for everyone"</h3>
+                    <p>Our website is the perfect destination for anyone planning a tour or travel. Whether you're a
+                        solo traveler, a couple, a family, or a group of friends, we have something for everyone. Our
+                        website offers a wide range of travel options, including budget-friendly options, luxury
+                        vacations, and everything in between.
+
+                    </p>
+                    <p><a href="{% url 'root:about_us' %}" class=" btn_1 white">Read more</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End container-fluid  -->
+
+    <div class="container margin_60">
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{% static 'img/laptop.png' %}" alt="Laptop" class="img-fluid laptop">
+            </div>
+            <div class="col-md-6">
+                <h3><span>Get started</span> with Pacific Tours & Travels</h3>
+                <p>
+                    we made this website in a way that customers dont need to much understanding of how website .
+                </p>
+                <ul class="list_order">
+                    <li><span>1</span>Select your preferred tours</li>
+                    <li><span>2</span>Purchase tickets and options</li>
+                    <li><span>3</span>Download Tickets from your email or website my dashboard</li>
+                </ul>
+                <a href="{% url 'root:index' %}" class="btn_1">Start now</a>
+            </div>
+        </div>
+        <!-- End row -->
+
+    </div>
+    <!-- End Container -->
+</main>
+<!-- End main -->
+{% endblock body %}

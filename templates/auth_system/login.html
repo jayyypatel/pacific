@@ -1,0 +1,43 @@
+{% extends 'root/layout.html' %}
+{% load static %}
+
+{% block body %}
+<main>
+    <section id="hero" class="login">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-8">
+                    <div id="login">
+                        <div class="text-center"><img src="{% static 'img/logo_sticky.png' %}" alt="Image" width="160"
+                                height="34"></div>
+                        <hr>
+                        <h3 align="center"><b> Login </b></h3>
+                        <form accept="{% url 'auth_system:login_user' %}" method="POST">
+                            {% csrf_token %}
+                            {% for message in messages %}
+
+                            <div class="alert alert-danger">
+                                {{ message }}
+                            </div>
+
+                            {% endfor %}
+                            
+                            {{form}}
+                            <p class="small">
+                                <a href="{% url 'auth_system:password_reset' %}">Forgot Password?</a>
+                            </p>
+                            <input type="submit" class="btn_full_outline btn_full" value="Login">
+                            <p class="small">
+                                <a href="{% url 'auth_system:register_user' %}">
+                                    <center>Register?</center>
+                                </a>
+                            </p>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main><!-- End main -->
+{% endblock body %}

@@ -1,0 +1,166 @@
+{% extends 'root/layout.html' %}
+{% load static %}
+
+{% block body %}
+<section id="hero_2" class="background-image" data-background="url(img/slide_hero_2.jpg)">
+    <div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+    <div class="intro_title">
+        <h1>Booking Details</h1>
+        
+        <!-- End bs-wizard -->
+    </div>
+    <!-- End intro-title -->
+    </div>
+    <!-- End opacity-mask-->
+</section>
+<!-- End Section hero_2 -->
+
+<main>
+    <div id="position">
+        <div class="container" style="font-size: large;">
+            <ul>
+                <li><b> {{data.schedules_fk.route_fk.origin_fk.city}}
+                </b>
+            </li>
+            <li><b> {{data.schedules_fk.route_fk.destination_fk.city}}
+                </b></li>
+            <li><b> {{data.travel_date}}
+                </b></li>
+                
+            </ul>
+        </div>
+    </div>
+    <!-- End position -->
+
+    <div class="container margin_60">
+        <div class="row">
+            <div class="col-lg-8 add_bottom_15">
+
+                <div class="form_title">
+                    <h3><strong><i class="icon-ok"></i></strong>Thank you!</h3>
+                    <p>
+                        thank you for choosing Pacific Tours & Travels 
+                    </p>
+                </div>
+                <div class="step">
+                    <p>
+                        
+                    </p>
+                </div>
+                <!--End step -->
+
+                <div class="form_title">
+                    <h3><strong><i class="icon-tag-1"></i></strong>Booking summary</h3>
+                    <p>
+                        
+                    </p>
+                </div>
+                <div class="step">
+                    <table class="table table-striped confirm">
+                        <thead>
+                            <tr>
+                                <th colspan="2">
+                                   Total Amount Paid: {{data.total_price}}, &nbsp;Total Seats: {{s_cnt}}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>Travel From: </strong>
+                                </td>
+                                <td>
+                                    {{data.schedules_fk.route_fk.origin_fk.city}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Travel To:</strong>
+                                </td>
+                                <td>
+                                    {{data.schedules_fk.route_fk.destination_fk.city}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Travel Date</strong>
+                                </td>
+                                <td>
+                                   {{data.travel_date}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Departure Time</strong>
+                                </td>
+                                <td>
+                                   {{data.schedules_fk.departureTime}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Arrival Time</strong>
+                                </td>
+                                <td>
+                                   {{data.schedules_fk.arrivalTime  }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Seat  Name/Number</strong>
+                                </td>
+                                <td>
+                                   
+                                   {% for i in seats  %}
+                                        {{i.seat_fk.seat_name}}, 
+                                   {% endfor %}
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Booking Name: </strong>
+                                </td>
+                                <td>
+                                    {{data.name}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <strong>Booking Date: </strong>
+                                </td>
+                                <td>
+                                    {{data.date}}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+                <!--End step -->
+            </div>
+            <!--End col -->
+
+            <aside class="col-lg-4" id="sidebar">
+                <div class="theiaStickySidebar">
+                    <div class="box_style_1" id="booking_box">
+                        <h3 class="inner">Thank you!</h3>
+                        <p> Total Amount: {{data.total_price}} <br>
+                            Total Seats: {{s_cnt}} <br>
+                            Bus: {{data.schedules_fk.route_fk.bus_fk.name}} - {{data.schedules_fk.route_fk.bus_fk.seat_type}}
+                        </p>
+                        <hr>
+                        <a class="btn_full_outline" href="{% url 'booking:pdf_busbooking' data.id %}" target="_blank">Download Your Invoice</a>
+                    </div>
+                </div>
+                <!--End sticky -->
+            </aside>
+
+        </div>
+        <!--End row -->
+    </div>
+    <!--End container -->
+</main>
+<!-- End main -->
+{% endblock body %}
+    

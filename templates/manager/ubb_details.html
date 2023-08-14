@@ -1,0 +1,106 @@
+{% extends 'manager/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<!--**********************************
+            Content body start
+        ***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Travel on {{b_data.travel_date}} in Bus No: {{b_data.b_num}}</h4>
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h5>From {{b_data.from}} To {{b_data.to}}</h5>
+                    <h6>Bus Number: {{b_data.b_num}}</h6>
+                    <h6>Total Bus Seats: {{b_data.max_seat}}</h6>
+                    <h6>Travel Date: {{b_data.travel_date}}</h6>
+                    <h6>Price Per person: {{b_data.price}}</h6>
+                    <h6>Departure Time : {{b_data.dt}}  At  {{b_data.bp}}</h6>
+                    <h6>Arrivale Time : {{b_data.at}}  At  {{b_data.dp}}</h6>
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
+        
+
+        <!-- row -->
+        
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Total Booked Seats :- {{cnt}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Seat</th>
+                                        <th>Contact</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for i in data %}
+                                    <tr>
+                                        <td>{{i.id}}</td>
+                                        <td>{{i.busbookings_fk.name}}</td>
+                                        <td>{{i.seat_fk.seat_name}}</td>
+                                        <td>{{i.busbookings_fk.user_fk.contact}}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+                                                    <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    
+                                                    <a class="dropdown-item" href="#">Delete</a>
+                                                </div>
+                                            </div>
+                                            
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>ID</td>
+                                        <th>City</th>
+                                        <th>State</th>
+                                        <th>Contact</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+            Content body end
+        ***********************************-->
+
+
+
+
+{% endblock body %}

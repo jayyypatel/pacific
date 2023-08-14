@@ -1,0 +1,137 @@
+{% extends 'root/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<section class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/header_bg.jpg' %}" data-natural-width="1400" data-natural-height="470">
+    <div class="parallax-content-1 opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+        <div class="animated fadeInDown">
+            <h1>Contact us </h1> 
+            <p>Thank you for your valuable time.
+
+                
+                
+                
+
+
+            </p>
+        </div>
+    </div>
+</section>
+<!-- End Section -->
+
+<main>
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'root:index' %}">Home</a>
+                </li>
+                
+                <li>Contact Us</li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Position -->
+
+    <div class="container margin_60">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form_title">
+                    <h3><strong><i class="icon-pencil"></i></strong>Fill the form below</h3>
+                    <p>
+                        Mussum ipsum cacilds, vidis litro abertis.
+                    </p>
+                </div>
+                <div class="step">
+
+                    <div id="message-contact"></div>
+                    <form method="post" action="{% url 'root:contact_us' %}" method="POST" >
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    {{form.name}}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    {{form.contact}}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End row -->
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    {{form.email_id}}
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Subject</label>
+                                    {{form.subject}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label>Message</label>
+                                    {{form.message}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                
+                                <input type="submit" value="Submit" class="btn_1" id="submit-contact">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- End col-md-8 -->
+
+            <div class="col-md-4">
+                <div class="box_style_1">
+                    <span class="tape"></span>
+                    <h4>Address <span><i class="icon-pin pull-right"></i></span></h4>
+                    <p>
+                        501,Sapath V near CPICA 
+                    </p>
+                    <hr>
+                    <h4>Help center <span><i class="icon-help pull-right"></i></span></h4>
+                    <p>
+                        contact us here anytime
+                    </p>
+                    <ul id="contact-info">
+                        <li>+ 96623 24834</li>
+                        <li><a href="#">pacifictourstravels23@gmail.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="box_style_4">
+                    <i class="icon_set_1_icon-57"></i>
+                    <h4>Need <span>Help?</span></h4>
+                    <a href="tel://96623 24834" class="phone">+96623 24834</a>
+                    <small>Monday to Friday 9.00am - 7.30pm</small>
+                </div>
+            </div>
+            <!-- End col-md-4 -->
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End container -->
+
+    <!-- <div id="map_contact"></div> -->
+    <!-- end map-->
+     
+    <!-- end directions-->
+</main>
+<!-- End main -->
+
+{% endblock  %}
+    

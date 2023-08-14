@@ -1,0 +1,134 @@
+{% extends 'manager/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<!--**********************************
+            Content body start
+        ***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Add Special Tours Page</h4>
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
+        {% for message in messages %} 
+ 
+                            <div class="alert alert-danger"> 
+                                {{ message }} 
+                            </div> 
+ 
+        {% endfor %}
+
+        <!-- row -->
+        <div class="card-body">
+            <div class="form-validation">
+        
+                <form class="" action="." method="post" enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xl-12">
+                        
+                            {% for i in form %}
+                            <div class="mb-3 row">
+                                <label class="col-lg-4 col-form-label">{{ i.label }}
+                                    <span class="text-danger">*{{i.error}}</span>
+                                </label>
+                                <div class="col-lg-6">
+                                    {{ i }}
+                                </div>
+                            </div>
+                            {% endfor %}
+        
+        
+        
+        
+                            <div class="mb-3 row">
+                                <div class="col-lg-8 ms-auto">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Total Bus Count :- {{cnt}}</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example" class="display" style="min-width: 845px">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Starting Date</th>
+                                        <th>Ending Date</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    {% for i in data %}
+                                    
+                                    <tr>
+                                        <td>{{i.id}}</td>
+                                        <td>{{i.name}}</td>
+                                        <td>{{i.start_date}}</td>
+                                        <td>{{i.end_date}}</td>
+                                        <td>{{i.price}}</td>            
+                                        
+                                        
+                                        <td>
+                                            <div class="dropdown">
+                                                <button type="button" class="btn btn-success light sharp" data-bs-toggle="dropdown">
+                                                    <svg width="20px" height="20px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><circle fill="#000000" cx="5" cy="12" r="2"/><circle fill="#000000" cx="12" cy="12" r="2"/><circle fill="#000000" cx="19" cy="12" r="2"/></g></svg>
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{% url 'manager:stours_details' i.id %}">stours_details</a>
+                                                    <a class="dropdown-item" href="{% url 'manager:del_stours' i.id %}">Delete</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Starting Date</th>
+                                        <th>Ending Date</th>
+                                        <th>Price</th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--**********************************
+            Content body end
+        ***********************************-->
+
+
+
+
+{% endblock body %}

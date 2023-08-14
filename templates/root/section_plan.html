@@ -1,0 +1,51 @@
+{% load static %}
+<main>
+    <div class="white_bg">
+        <div class="container margin_60">
+            <div class="main_title">
+                <h2>Plan <span>Your Tour</span> Easly</h2>
+                <p>
+                    Book your tour today and experience the ultimate travel experience.
+                </p>
+            </div>
+            <div class="row feature_home_2">
+                <div class="col-md-4 text-center">
+                    <img src="{% static 'img/adventure_icon_1.svg' %}" alt="" width="75" height="75">
+                    <h3><span>H24</span> Support</h3>
+                    <p>Our H24 support service is here to provide you with round-the-clock assistance whenever you need
+                        it..</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="{% static 'img/adventure_icon_2.svg' %}" alt="" width="75" height="75">
+                    <h3><span> Room and food</span> included</h3>
+                    <p> Experience comfort and convenience on our tours, as we take care of your accommodation and meal
+                        needs. Our carefully selected hotels offer comfortable rooms, ensuring you get a good night's
+                        sleep after a day of exploring. .</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="{% static 'img/adventure_icon_3.svg' %}" alt="" width="75" height="75">
+                    <h3><span> Everything </span>organized</h3>
+                    <p>No need to worry about finding a place to stay or where to eat, just focus on creating
+                        unforgettable memories. Book your tour today and experience the ultimate travel experience.".
+                    </p>
+                </div>
+            </div>
+
+            <div class="banner_2">
+                <div class="wrapper d-flex align-items-center opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.3)"
+                    style="background-color: rgba(0, 0, 0, 0.3);">
+                    <div>
+                        <h3>Your Perfect<br>Tour Experience</h3>
+                        <p>Activities and accommodations</p>
+                        <a href="{% url 'root:tours' %}" class="btn_1">Book Now </a>
+                    </div>
+                </div>
+                <!-- /wrapper -->
+            </div>
+            <!-- /banner_2 -->
+
+        </div>
+        <!-- End container -->
+    </div>
+    <!-- End white_bg -->
+</main>

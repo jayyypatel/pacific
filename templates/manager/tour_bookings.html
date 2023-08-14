@@ -1,0 +1,133 @@
+{% extends 'manager/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<!--**********************************
+            Content body start
+        ***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4> All Tour Bookings Page</h4>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- row -->
+
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Upcoming Tour Booking information</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        {% if up_tour_booking %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Tour Name</th>
+                                        <th scope="col">Price Per Person</th>
+                                        <th scope="col">Total Travel Days</th>
+                                        <th scope="col">Travel Date</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for i in up_tour_booking %}
+                                    <tr>
+                                        <td>{{i.special_tours_fk.name}}</td>
+                                        <td>{{i.special_tours_fk.price}}</td>
+                                        <td>{{i.special_tours_fk.total_days}}</td>
+                                        <td>{{i.travel_date}}</td>
+                                        <td><span><a href="{% url 'manager:tb_details' i.id %}" class="me-4"
+                                                    data-bs-toggle="tooltip" data-placement="top" title="Details"><i
+                                                        class="fas fa-pencil-alt color-muted"></i> </a><a
+                                                    href="javascript:void()" data-bs-toggle="tooltip"
+                                                    data-placement="top" title="Close"><i
+                                                        class="fas fa-times"></i></a></span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <h4>No Bookings Avaiable</h4>
+                        {% endif %}
+                            
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Previous Tour Booking information</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        {% if previous_tour_booking %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Tour Name</th>
+                                        <th scope="col">Price Per Person</th>
+                                        <th scope="col">Total Travel Days</th>
+                                        <th scope="col">Travel Date</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for i in previous_tour_booking %}
+                                    <tr>
+                                        <td>{{i.special_tours_fk.name}}</td>
+                                        <td>{{i.special_tours_fk.price}}</td>
+                                        <td>{{i.special_tours_fk.total_days}}</td>
+                                        <td>{{i.travel_date}}</td>
+                                        <td><span><a href="{% url 'manager:tb_details' i.id %}" class="me-4"
+                                                    data-bs-toggle="tooltip" data-placement="top" title="Details"><i
+                                                        class="fas fa-pencil-alt color-muted"></i> </a><a
+                                                    href="javascript:void()" data-bs-toggle="tooltip"
+                                                    data-placement="top" title="Close"><i
+                                                        class="fas fa-times"></i></a></span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        {% else %}
+                        <h4>No Bookings Avaiable</h4>
+                        {% endif %}
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock body %}

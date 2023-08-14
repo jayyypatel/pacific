@@ -1,0 +1,87 @@
+{% extends 'manager/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<!--**********************************
+            Content body start
+        ***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4>Bus Seat Registration Page</h4>
+                    <span></span>
+                </div>
+            </div>
+
+        </div>
+        {% for message in messages %}
+
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+
+        {% endfor %}
+
+        <!-- row -->
+        <div class="card-body">
+            <div class="form-validation">
+                <div class="alert alert-primary alert-dismissible fade show">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="btn-close"><span><i
+                                class="mdi mdi-btn-close"></i></span>
+                    </button>
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-1 mb-1">Please Read</h5>
+                            <p class="mb-0">1.  for <b>' Seat Name'</b> Your need to enter just one word that will
+                                preceding word like 'T' or 'S' where bus Name will be <b> T1, T2 </b> till total count
+                                <br>
+                                2.  It might take Some time to create all seats that your entered in <b> 'seat count' </b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr><br>
+                <form class="" action="." method="post" enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-xl-12">
+
+                            {% for i in form %}
+                            <div class="mb-3 row">
+                                <label class="col-lg-4 col-form-label">{{ i.label }}
+                                    <span class="text-danger">*{{i.error}}</span>
+                                </label>
+                                <div class="col-lg-6">
+                                    {{ i }}
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+
+
+                            <div class="mb-3 row">
+                                <div class="col-lg-8 ms-auto">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+
+    </div>
+</div>
+<!--**********************************
+            Content body end
+        ***********************************-->
+
+
+
+
+{% endblock body %}

@@ -1,0 +1,197 @@
+{% extends 'root/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<section class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/header_bg.jpg' %}"
+    data-natural-width="1400" data-natural-height="470">
+    <div class="parallax-content-1 opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+        <div class="animated fadeInDown">
+            <h1>Daily Tours from Major Citys</h1>
+            <p>Thank you for your valuable time.</p>
+        </div>
+    </div>
+</section>
+
+<main>
+    <!-- <div id="position">
+        <div class="container" style="font-size: large;">
+            <ul>
+                <li><b> {% with results.all|first as data %}
+                        {{data.route_fk.origin_fk.city}}
+                        {% endwith %}
+                    </b>
+                </li>
+                <li><b> {% with results.all|first as data %}
+                        {{data.route_fk.destination_fk.city}}
+                        {% endwith %}
+                    </b></li>
+                    <li><b> {{date}}
+                    </b></li>
+            </ul>
+        </div>
+    </div> -->
+    <div class="container margin_60">
+
+        <div class="row">
+            <aside class="col-lg-3">
+                
+                <div class="box_style_cat">
+                    <ul id="cat_nav">
+                        <li><a href="#" id="active"><i class="icon_set_1_icon-51"></i>All tours <span>(141)</span></a>
+                        </li>
+                        <li><a href="#"><i class="icon_set_1_icon-3"></i>City sightseeing <span>(20)</span></a>
+                        </li>
+                        <li><a href="#"><i class="icon_set_1_icon-4"></i>Museum tours <span>(16)</span></a>
+                        </li>
+                        <li><a href="#"><i class="icon_set_1_icon-44"></i>Historic Buildings <span>(12)</span></a>
+                        </li>
+                        <li><a href="#"><i class="icon_set_1_icon-37"></i>Walking tours <span>(11)</span></a>
+                        </li>
+                        <li><a href="#"><i class="icon_set_1_icon-14"></i>Eat & Drink <span>(20)</span></a>
+                        </li>
+                        <li><a href="#"><i class="icon_set_1_icon-43"></i>Churces <span>(08)</span></a>
+                        </li>
+                        <li><a href="#"><i class="icon_set_1_icon-28"></i>Skyline tours <span>(11)</span></a>
+                        </li>
+                    </ul>
+                </div>
+
+                
+                <!--End filters col-->
+                <div class="box_style_2 d-none d-sm-block">
+                    <i class="icon_set_1_icon-57"></i>
+                    <h4>Need <span>Help?</span></h4>
+                    <a href="tel://96623 24734" class="phone">+96623 24734</a>
+                    <small>Monday to Friday 9.00am - 7.30pm</small>
+                </div>
+            </aside>
+            <!--End aside -->
+            <div class="col-lg-9">
+
+                <!-- <div id="tools">
+                    <div class="row justify-content-between">
+                        <div class="col-md-3 col-sm-4">
+                            <div class="styled-select-filters">
+                                <select name="sort_price" id="sort_price">
+                                    <option value="" selected>Sort by price</option>
+                                    <option value="lower">Lowest price</option>
+                                    <option value="higher">Highest price</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-4 d-none d-sm-block text-end">
+                            <a href="all_tours_grid.html" class="bt_filters"><i class="icon-th"></i></a> <a href="#" class="bt_filters"><i class=" icon-list"></i></a>
+                        </div>
+
+                    </div>
+                </div> -->
+                <!--/tools -->
+                
+                {% if results %}
+                {% for i in results %}
+                <div class="strip_all_tour_list wow fadeIn" data-wow-delay="0.1s">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 position-relative">
+                            
+                            
+                            <div class="img_list">
+                                <a href="single_tour.html"><img src="{% static 'img/tour_box_1.jpg' %}" alt="Image">
+                                    <!-- <div class="short_info"><i class="icon_set_1_icon-4"></i>Museums </div> -->
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="tour_list_desc">
+                                <div class="rating"> 
+                                </div>
+                                <h3><strong><span> {{i.route_fk.origin_fk.city}}</span> To <span>{{i.route_fk.destination_fk.city}}</span>  [ {{i.route_fk.bus_fk.seat_type}} ]</strong></h3>
+                                <p><b>Pacific Tours & Travels </b><br>
+                                    <b>Duration: </b>{{i.duration}} , ( 1 Rest Stop )
+                                    <br><b>Facility: </b> Charging, Pillow Provide, Water Bottle, Reading light</p>
+                                <ul class="add_info">
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="icon_set_1_icon-83"></i></span>
+                                            <div class="tooltip-content">
+                                                <h4>Schedule</h4>
+                                                <strong>Duration:</strong> {{ i.duration }}
+                                                <br>
+                                                <strong>Departure Time</strong> {{i.departureTime}}
+                                                <br>
+                                                <strong>Arrival Time</strong> {{i.arrivalTime}}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="icon_set_1_icon-41"></i></span>
+                                            <div class="tooltip-content">
+                                                <h4>Stops</h4> {{i.route_fk.stops_city}}
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="icon_set_1_icon-27"></i></span>
+                                            <div class="tooltip-content">
+                                                <h4>Pick-up and drop points</h4> 
+                                               <strong> Boarding Point:</strong> {{i.route_fk.boarding_point}}
+                                                <br>
+                                                <strong> Dropping Point:</strong> {{i.route_fk.dropping_point}}
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- <li>
+                                        <div class="tooltip_styled tooltip-effect-4">
+                                            <span class="tooltip-item"><i class="icon_set_1_icon-25"></i></span>
+                                            <div class="tooltip-content">
+                                                <h4>Transport</h4>
+                                                <strong>Metro: </strong>Musée du Louvre station (line 1)
+                                                <br>
+                                                <strong>Bus:</strong> 21, 24, 27, 39, 48, 68, 69, 72, 81, 95
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </li> -->
+                                </ul>
+                                <p><br><b>Day's: </b>{{i.daysOfWeek}} </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2">
+                            <div class="price_list">
+                                <div><sup>&#x20B9;</sup>{{i.price}}<small>*Per person</small>
+                                    <p><a href="{% url 'booking:book_seat' i.id date %}" class="btn_1">Book</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--End strip -->
+                {% endfor %}
+                {% else %}
+                <h1 style="color: rgb(49, 39, 243);"> Today No Daily Tours Available </h1>
+                {% endif %}
+                    
+                
+
+
+
+
+
+
+                
+
+            </div>
+            <!-- End col lg-9 -->
+        </div>
+        <!-- End row -->
+    </div>
+    <!-- End container -->
+</main>
+
+{% endblock body %}

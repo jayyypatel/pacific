@@ -1,0 +1,268 @@
+{% extends 'root/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock css %}
+
+
+{% block body %}
+<section id="hero_2" class="background-image" data-background="url(img/slide_hero_2.jpg)">
+    <div class="opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+        <div class="intro_title">
+            <h1>Book Your Seat</h1>
+            <!-- <div class="bs-wizard row">
+
+                <div class="col-4 bs-wizard-step complete">
+                    <div class="text-center bs-wizard-stepnum">Your cart</div>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <a href="cart.html" class="bs-wizard-dot"></a>
+                </div>
+
+                <div class="col-4 bs-wizard-step active">
+                    <div class="text-center bs-wizard-stepnum">Your details</div>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <a href="#" class="bs-wizard-dot"></a>
+                </div>
+
+                <div class="col-4 bs-wizard-step disabled">
+                    <div class="text-center bs-wizard-stepnum">Finish!</div>
+                    <div class="progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                    <a href="confirmation.html" class="bs-wizard-dot"></a>
+                </div>
+
+            </div> -->
+            <!-- End bs-wizard -->
+        </div>
+        <!-- End intro-title -->
+    </div>
+    <!-- End opacity-mask-->
+</section>
+<!-- End Section hero_2 -->
+
+<main>
+    <div id="position">
+        <div class="container" style="font-size: large;">
+            <ul>
+                <li><b> {{data.route_fk.origin_fk.city}}
+                    </b>
+                </li>
+                <li><b> {{data.route_fk.destination_fk.city}}
+                    </b></li>
+                <li><b> {{date}}
+                    </b></li>
+            </ul>
+        </div>
+    </div>
+    <!-- End position -->
+
+    <div class="container margin_60">
+
+        {% if s_count == 0 %}
+        <div class="row">
+
+            <div class="col-lg-8 add_bottom_15">
+                <h2>Sorry All Seats are booked, please try again </h2>
+            </div>
+        </div>
+
+        {% else %}
+        <form action="." method="POST">
+            {% csrf_token %}
+            <div class="row">
+
+                <div class="col-lg-8 add_bottom_15">
+                    <div class="form_title">
+                        <h3><strong>1</strong>Your Details</h3>
+                        <p>
+                            Please enter details for booking
+                        </p>
+                    </div>
+                    <div class="step">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>First name</label>
+                                    <input type="text" class="form-control" id="firstname" name="firstname" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Last name</label>
+                                    <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- <div class="col-sm-6">
+                                <div class="form-group" style="margin-left: 50px;">
+                                    
+                                </div>
+                            </div> -->
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <!-- !this is tmp -->
+
+                                    <label>Select Your seat</label>
+                                    <div class="styled-select-cat">
+                                        <div class="styled-select-cat">
+                                            <select name="seats" id="seats" multiple size="4" style="width: 385px;">
+
+                                                {% for i in seats %}
+                                                <option value="{{i.seat_name}}">{{i.seat_name}}</option>
+                                                {% endfor %}
+
+
+
+                                            </select>
+                                            <p><b> for multiple selection please press 'Ctrl'</b></p>
+                                        </div>
+                                    </div>
+
+                                    <!-- !this is tmp -->
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group" style="margin-left: 20px;">
+                                    
+                                    {% if data.route_fk.bus_fk.seat_type == 'non-ac-seat(2+2)' %}
+                                    <img src="{% static 'img/seat_design_2x2.png' %}" alt="" height="400px"
+                                        width="250px" style="margin-left: 50px;">
+                                    {% elif data.route_fk.bus_fk.seat_type == 'ac-seat(2+1)' %}
+                                    <img src="{% static 'img/seat_design_2x1.png' %}" alt="" height="400px"
+                                        width="250px" style="margin-left: 50px;">
+                                    {% endif %}
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Telephone</label>
+                                <input type="text" id="telephone_booking" name="telephone_booking" class="form-control">
+                            </div>
+                        </div>
+                    </div> -->
+
+                    </div>
+                    <!--End step -->
+
+
+
+
+
+                    <div id="policy">
+
+                        <button class="btn_1"> Book now </button>
+                        
+
+                    </div>
+                </div>
+
+        </form>
+
+
+
+
+        <aside class="col-lg-4">
+
+            <div class="box_style_1">
+                <h3 class="inner">- Details -</h3>
+                <table class="table table_summary">
+                    <tbody>
+                        <tr>
+                            <td><b>Total available seats</b></td>
+                            <td class="text-end"><b> {{s_count}} </b></td>
+
+                        </tr>
+                        <tr>
+                            <td>Date</td>
+                            <td class="text-end">{{date}}</td>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                Seat Type
+                            </td>
+                            <td class="text-end">
+                                {{data.route_fk.bus_fk.seat_type}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Boarding Point
+                            </td>
+                            <td class="text-end">
+                                {{data.route_fk.boarding_point}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Dropping Point
+                            </td>
+                            <td class="text-end">
+                                {{data.route_fk.dropping_point}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Duration
+                            </td>
+                            <td class="text-end">
+                                {{data.duration}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Departure Time
+                            </td>
+                            <td class="text-end">
+                                {{data.departureTime}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Arrival Time
+                            </td>
+                            <td class="text-end">
+                                {{data.arrivalTime}}
+                            </td>
+                        </tr>
+
+                        <tr class="total">
+                            <td>
+                                Price Per person
+                            </td>
+                            <td class="text-end">
+                                &#x20B9; {{data.price}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="box_style_4">
+                <i class="icon_set_1_icon-57"></i>
+                <h4>Need <span>Help?</span></h4>
+                <a href="tel://9662324834" class="phone">+9662324834</a>
+                <small>Monday to Friday 9.00am - 7.30pm</small>
+            </div>
+        </aside>
+        {% endif %}
+    </div>
+
+    <!--End row -->
+    </div>
+    <!--End container -->
+</main>
+<!-- End main -->
+{% endblock body %}

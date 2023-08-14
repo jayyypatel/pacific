@@ -1,0 +1,225 @@
+{% extends 'root/layout.html' %}
+{% load static %}
+
+{% block body %}
+
+
+<div id="carousel-home">
+    <div class="owl-carousel owl-theme">
+        <div class="owl-slide cover" style="background-image: url('{{data.get_img1_url}}');">
+            <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                <div class="container">
+                    <div class="row justify-content-center justify-content-md-start">
+                        <div class="col-lg-12 static">
+                            <div class="slide-text text-center white">
+                                <h2 class="owl-slide-animated owl-slide-title">{{data.name}}</h2>
+                                <p class="owl-slide-animated owl-slide-subtitle">
+                                    Discover hidden wonders on trips curated by Pacific Tours Experts
+                                </p>
+                                <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href=""
+                                        role="button">&#x20B9; {{data.price}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/owl-slide-->
+        <div class="owl-slide cover" style="background-image: url('{{data.get_img2_url}}');">
+            <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+                <div class="container">
+                    <div class="row justify-content-center justify-content-md-end">
+                        <div class="col-lg-6 static">
+                            <div class="slide-text text-end white">
+                                <h2 class="owl-slide-animated owl-slide-title">{{data.name}}</h2>
+                                <p class="owl-slide-animated owl-slide-subtitle">
+                                    Discover hidden wonders on trips curated by Pacific Tours Experts
+                                </p>
+                                <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href=""
+                                        role="button">&#x20B9; {{data.price}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/owl-slide-->
+        <div class="owl-slide cover" style="background-image: url('{{data.get_img3_url}}');">
+            <div class="opacity-mask d-flex align-items-center" data-opacity-mask="rgba(0, 0, 0, 0.5)">
+                <div class="container">
+                    <div class="row justify-content-center justify-content-md-start">
+                        <div class="col-lg-6 static">
+                            <div class="slide-text white">
+                                <h2 class="owl-slide-animated owl-slide-title">{{data.name}}</h2>
+                                <p class="owl-slide-animated owl-slide-subtitle">
+                                    Discover hidden wonders on trips curated by Pacific Tours Experts
+                                </p>
+                                <div class="owl-slide-animated owl-slide-cta"><a class="btn_1" href=""
+                                        role="button">&#x20B9; {{data.price}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/owl-slide-->
+    </div>
+    <div id="icon_drag_mobile"></div>
+</div>
+
+<main>
+    <div id="position">
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'root:index' %}">Home</a>
+                </li>
+                <li><a href="{% url 'root:tours' %}">Tours</a>
+                </li>
+                <li>Tours Details</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <div class="container margin_60">
+        <div class="row">
+            <div class="col-lg-8" id="single_tour_desc">
+                <div id="single_tour_feat">
+                    <ul>
+                        <li><i class="icon_set_1_icon-4"></i>Museum</li>
+                        <li><i class="icon_set_1_icon-83"></i>3 Hours</li>
+                        <li><i class="icon_set_1_icon-13"></i>Accessibiliy</li>
+                        <li><i class="icon_set_1_icon-82"></i>144 Likes</li>
+                        <li><i class="icon_set_1_icon-22"></i>Pet allowed</li>
+                        <li><i class="icon_set_1_icon-97"></i>Audio guide</li>
+                        <li><i class="icon_set_1_icon-29"></i>Tour guide</li>
+                    </ul>
+                </div>
+
+
+
+
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h3>Description</h3>
+                    </div>
+                    <div class="col-lg-9">
+                        
+                        {{data.description}}
+                        <!-- End row  -->
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h3>Schedule</h3>
+                    </div>
+                    <div class="col-lg-9">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{data.schedule}}
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+                <hr>
+
+            </div>
+            <!--End  single_tour_desc-->
+
+            <aside class="col-lg-4">
+                <h4><center> Travel Date: {{data.start_date}} </center></h4>
+                <h4><center> Bus seat: {{data.bus_fk_k.seat_type}} </center></h4>
+                
+                {% if data.offer %}
+                <h4><center> Offer Discount: {{data.offer_per}} % </center></h4>
+                {% endif %}
+                    
+                
+                {% if seats %}
+                <form action="." method="POST">
+                    {% csrf_token %}
+                    <div class="box_style_1 expose">
+                        <h3 class="inner">- Booking -</h3>
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>First name</label>
+                                    <input type="text" class="form-control" id="firstname" name="firstname" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Last name</label>
+                                    <input type="text" class="form-control" id="lastname" name="lastname" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Select Your seat</label>
+                                    <div class="styled-select-cat">
+                                        <div class="styled-select-cat">
+                                            <select name="seats" id="seats" multiple size="4" style="width: 350px;">
+
+                                                {% for i in seats %}
+                                                <option value="{{i.seat_name}}">{{i.seat_name}}</option>
+                                                {% endfor %}
+
+
+
+                                            </select>
+                                            <b>for multiple selection please press 'Ctrl'</b>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <br>
+
+                        <button class="btn_1"> Book now</button>
+
+                    </div>
+                    <!--/box_style_1 -->
+                </form>
+                {% else %}
+                <h3 style="color:blue;"> <center> Booking Full </center></h3>
+                {% endif %}
+
+
+
+                <div class="box_style_4">
+                    <i class="icon_set_1_icon-90"></i>
+                    <h4><span>Book</span> by phone</h4>
+                    <a href="tel://004542344599" class="phone">+96623 24834</a>
+                    <small>Monday to Friday 9.00am - 7.30pm</small>
+                </div>
+
+            </aside>
+        </div>
+        <!--End row -->
+    </div>
+    <!--End container -->
+
+    <div id="overlay"></div>
+    <!-- Mask on input focus -->
+
+</main>
+
+{% endblock body %}

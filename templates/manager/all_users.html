@@ -1,0 +1,83 @@
+{% extends 'manager/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+    <!--**********************************
+            Content body start
+        ***********************************-->
+        <div class="content-body">
+            <div class="container-fluid">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>All Users Page</h4>
+                            <span></span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- row -->
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Total Count :- {{cnt}}</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example" class="display" style="min-width: 845px">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                
+                                                <th>Ph No.</th>
+                                                <th>Gender</th>
+                                                
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            {% for i in data %}
+                                            <tr>
+                                                <td>{{i.id}}</td>
+                                                <td>{{i.username}}</td>
+                                                <td><a href="mailto:{{i.email_id}}">
+                                                    {{i.email}} </a></td>
+                                                
+                                                <td>{{i.contact}}</td>
+                                                <td>{{i.gender}}</td>
+                                            </tr>
+                                            {% endfor %}
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>ID</td>
+                                                <th>Username</th>
+                                                <th>Email</th>
+                                                
+                                                <th>Ph No.</th>
+                                                <th>Gender</th>
+                                                
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+{% endblock body %}
+    

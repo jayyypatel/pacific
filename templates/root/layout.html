@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Pacific - Premium site template for city tours agencies, transfers and tickets.">
+    <meta name="author" content="Ansonika">
+    <title>Pacific Tours & Travels</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
+        href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
+        href="img/apple-touch-icon-144x144-precomposed.png">
+
+    <!-- GOOGLE WEB FONT -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Gochi+Hand&amp;family=Montserrat:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- COMMON CSS -->
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/style.css' %}" rel="stylesheet">
+    <link href="{% static '/css/vendors.css' %}" rel="stylesheet">
+
+    <!-- ALTERNATIVE COLORS CSS -->
+    <link href="#" id="colors" rel="stylesheet">
+    
+    {% block css %}
+     <style>
+        
+     </style>   
+    {% endblock css %}
+        
+
+</head>
+
+<body>
+    <div class="layer"></div>
+    <!-- Header================================================== -->
+    <header>
+        <div id="top_line">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6"><i class="icon-phone"></i><strong>+96623 24834</strong></div>
+                    <div class="col-6">
+                        <ul id="top_links">
+
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'auth_system:logout_user' %}" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'">Logout</a></li>
+                            {% else %}
+                            <li><a href="{% url 'auth_system:login_user' %}" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'">Login</a></li>
+                            <li><a href="{% url 'auth_system:register_user' %}" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'">Sign-in</a></li>
+                            {% endif %}
+
+
+                        </ul>
+                    </div>
+                </div><!-- End row -->
+            </div><!-- End container-->
+        </div><!-- End top line-->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-3">
+                    <div id="logo_home">
+                        <h1><a href="{% url 'root:index' %}" title="City tours travel template">Pacific Tours travel
+                                template</a>
+                        </h1>
+                    </div>
+                </div>
+                <nav class="col-9">
+                    <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu
+                            mobile</span></a>
+                    <div class="main-menu">
+                        <div id="header_menu">
+                            <img src="{% static 'img/logo_sticky.png' %}" width="160" height="34" alt="City tours">
+                        </div>
+                        <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
+                        <ul>
+                            <li class="submenu">
+                                <a href="{% url 'root:index' %}" class="show-submenu"  >Home</a>
+                            </li>&nbsp;&nbsp;&nbsp;
+                            <li class="submenu">
+                                <a href="{% url 'root:tours' %}" class="show-submenu" >Tours</a>
+                            </li>&nbsp;&nbsp;&nbsp;
+                             <li class="submenu">
+                                <a href="{% url 'root:daily_tours' %}" class="show-submenu"  >Daily Tours</a>
+                            </li>&nbsp;&nbsp;&nbsp;
+                            <li class="submenu">
+                                <a href="{% url 'root:about_us' %}" class="show-submenu" >About Us</a>
+                            </li>&nbsp;&nbsp;&nbsp;
+                            <li class="submenu">
+                                <a href="{% url 'root:contact_us' %}" class="show-submenu" >Contact Us</a>
+                            </li>
+
+                            {% if user.is_authenticated %}
+                            <li class="submenu">
+                                <a href="{% url 'root:mydashboard' %}" class="show-submenu" >My Dashboard</a>
+                            </li>
+                            {% endif %}
+
+
+
+                        </ul>
+
+                    </div><!-- End main-menu -->
+                    <!-- <ul id="top_tools">
+                        <li>
+                            <a href="javascript:void(0);" class="search-overlay-menu-btn"><i
+                                    class="icon_search"></i></a>
+                        </li>
+
+                    </ul> -->
+                </nav>
+            </div>
+        </div><!-- container -->
+    </header><!-- End Header -->
+
+    {% block body %}
+
+    {% endblock body %}
+
+    {% block section_slider %}
+
+    {% endblock section_slider %}
+
+    {% block section_special_offer %}
+
+    {% endblock section_special_offer %}
+
+    {% block section_top_th %}
+
+    {% endblock section_top_th %}
+
+    {% block section_plan %}
+
+    {% endblock section_plan %}
+
+    {% block section_blog %}
+
+    {% endblock section_blog %}
+
+    <footer class="revealed">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Need help?</h3>
+                    <a href="tel://9662324834" id="phone">+96623 24734</a>
+                    <a href="#" id="email_footer">pacifictourtravel23@gmail.com</a>
+                </div>
+                <div class="col-md-3">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="{% url 'root:about_us' %}">About us</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="{% url 'auth_system:login_user' %}">Login</a></li>
+                        <li><a href="{% url 'auth_system:register_user' %}">Sign-in</a></li>
+                        <li><a href="{% url 'root:contact_us' %}">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h3>Discover</h3>
+                    <ul>
+                        <li><a href="#">Community blog</a></li>
+                        <li><a href="#">Tour guide</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h3>Pacific Tours & Travels</h3>
+                    Our website is the perfect destination for anyone planning a tour or travel. Whether you're a solo
+                    traveler, a couple, a family, or a group of friends, we have something for everyone.
+
+                </div>
+            </div><!-- End row -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="social_footer">
+                        <ul>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-google"></i></a></li>
+                        </ul>
+                        <p>© Pacific Tours & Travels 2023</p>
+                    </div>
+                </div>
+            </div><!-- End row -->
+        </div><!-- End container -->
+    </footer><!-- End footer -->
+
+    <div id="toTop"></div><!-- Back to top button -->
+
+    <!-- Search Menu -->
+    <div class="search-overlay-menu">
+        <span class="search-overlay-close"><i class="icon_set_1_icon-77"></i></span>
+        <form role="search" id="searchform" method="get">
+            <input value="" name="q" type="text" placeholder="Search..." />
+            <button type="submit"><i class="icon_set_1_icon-78"></i>
+            </button>
+        </form>
+    </div><!-- End Search Menu -->
+
+
+
+    <!-- Common scripts -->
+    <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static '/js/common_scripts_min.js' %}"></script>
+    <script src="{% static '/js/functions.js' %}"></script>
+
+    <!-- NOTIFY BUBBLES  -->
+    <script src="{% static '' %}"></script>
+
+    <!-- SWITCHER  -->
+    <script src="{% static 'js/switcher.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+{% extends 'root/layout.html' %}
+{% load static %}
+
+{% block body %}
+<section class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/tour_box_9.jpg' %}"
+    data-natural-width="1400" data-natural-height="470">
+    <div class="parallax-content-1 opacity-mask" data-opacity-mask="rgba(0, 0, 0, 0.6)">
+        <div class="animated fadeInDown">
+            <h1>Pacific tours</h1>
+            <p>Feel the thrill of Pacific Tours.</p>
+        </div>
+    </div>
+</section>
+
+<main>
+    <div class="container margin_60">
+        <div class="row">
+            <center>
+            <a href="{% url 'manager:top_tours_report' %}">
+            <div class="col-md-3" style="background-color: rgb(210, 127, 127);height: 70px;">
+                <center style="margin-top: 23px;">
+                    <h3 style="color: white;padding-top: 20px;"> Top  tours</h3>
+                </center>
+            </div>
+            </a>
+            <a href="{% url 'manager:top_5destinations' %}">
+            <div class="col-md-3" style="background-color: rgb(210, 127, 127);height: 70px;">
+                <center style="margin-top: 23px;">
+                    <h3 style="color: white;padding-top: 20px;"> Top  Destination Report</h3>
+                </center>
+            </div>
+            </a>
+        </center>
+        </div>
+    </div>
+</main>
+{% endblock body %}

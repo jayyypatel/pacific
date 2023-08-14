@@ -1,0 +1,78 @@
+{% extends 'manager/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<!--**********************************
+            Content body start
+        ***********************************-->
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="row page-titles mx-0">
+            <div class="col-sm-6 p-md-0">
+                <div class="welcome-text">
+                    <h4> Upcoming Bus Bookings Page</h4>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- row -->
+
+        <hr>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">information</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped verticle-middle table-responsive-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Bus Plate No.</th>
+                                        <th scope="col">From</th>
+                                        <th scope="col">Too</th>
+                                        <th scope="col">Travel Date</th>
+                                        <th>Details</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for i in data %}
+                                    <tr>
+                                        <td>{{i.schedules_fk.route_fk.bus_fk.plate_no}}</td>
+
+                                        <td>{{i.schedules_fk.route_fk.origin_fk.city}}</td>
+                                        <td>{{i.schedules_fk.route_fk.destination_fk.city}}</td>
+                                        <td>{{i.travel_date}}</td>
+                                        <td><span><a href="{% url 'manager:ubb_details' i.schedules_fk.id i.travel_date %}" class="me-4"
+                                                    data-bs-toggle="tooltip" data-placement="top" title="Details"><i
+                                                        class="fas fa-pencil-alt color-muted"></i> </a><a
+                                                    href="javascript:void()" data-bs-toggle="tooltip"
+                                                    data-placement="top" title="Close"><i
+                                                        class="fas fa-times"></i></a></span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+{% endblock body %}
